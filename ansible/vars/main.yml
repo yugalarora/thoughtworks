@@ -1,0 +1,21 @@
+---
+
+############################
+# Used in parts 1, 2 and 3 #
+############################
+
+# AWS Credentials
+aws_access_key: "AKIAJX7NG6YLZ2AOBYFA"
+aws_secret_key: "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"
+aws_region:     "ap-south-1"
+
+# VPC Information
+vpc_name:       "uat"
+vpc_cidr_block: "10.0.0.0/16"
+
+# For Security Group Rule
+my_ip: "115.96.177.55"
+
+# Subnets
+public_subnet_1_cidr:  "10.0.0.0/24"
+private_subnet_1_cidr: "10.0.1.0/24"
