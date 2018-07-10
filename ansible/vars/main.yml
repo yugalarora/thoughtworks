@@ -1,9 +1,5 @@
 ---
 
-############################
-# Used in parts 1, 2 and 3 #
-############################
-
 # AWS Credentials
 aws_access_key: ""
 aws_secret_key: ""
@@ -19,3 +15,8 @@ my_ip: ""
 # Subnets
 public_subnet_1_cidr:  "10.0.0.0/24"
 private_subnet_1_cidr: "10.0.1.0/24"
+
+#Details for Launching EC2
+environment: "uat"
+ec2_type:
+ - {instance_type: 't2.nano' ,ami: 'ami-d783a9b8' ,region: "{{ aws_region }}" ,count: '1' ,security_group: 'sg-06023879a7c38ced5',subnet_id: 'subnet-0ce0b802357c91048' ,device_name: '/dev/sdb' ,volume_size: '10', name: 'web01'}
