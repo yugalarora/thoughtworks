@@ -7,16 +7,15 @@
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
 
-- name: Launching an EC2 Instance
+- name: Launching an EC2 Instance in Private Subnet
   ec2:
     instance_type: "{{ item.instance_type }}"
     image: "{{ item.ami }}"
-    region: "{{ item.region }}"
+    region: "{{ aws_region }}"
     keypair: "my_keypair"
     count: "{{ item.count }}"
-    # instance_profile_name: "{{ item.instance_profile_name }}"
-    group_id: "{{ item.security_group }}"
-    vpc_subnet_id: "{{ item.subnet_id }}"
+    group_id: "{{ app_sg_id }}"
+    vpc_subnet_id: "{{ private_subnet_id }}"
     wait: true
     volumes:
       - device_name: "{{ item.device_name }}"
@@ -28,11 +27,42 @@
     aws_secret_key: "{{ aws_secret_key }}"
   register: ec2
   with_items:
-     - "{{ ec2_type }}"
+     - "{{ private_ec2_type }}"
+  register: private_ec2
 
-- name: Waiting for the instance to come
-  local_action: wait_for
-  host: "{{ item.private_ip }}"
-  state: started
-  port: 22
-  with_items: ec2.instance
+- debug:
+   var: private_ec2.stdout_lines
+
+- name: Launching an EC2 Instance in public subnet
+  ec2:
+    instance_type: "{{ item.instance_type }}"
+    image: "{{ item.ami }}"
+    region: "{{ aws_region }}"
+    keypair: "my_keypair"
+    count: "{{ item.count }}"
+    group_id: "{{ web_sg_id }}"
+    vpc_subnet_id: "{{ public_subnet_id }}"
+    wait: true
+    volumes:
+      - device_name: "{{ item.device_name }}"
+        volume_size: "{{ item.volume_size }}"
+    instance_tags:
+     name: "{{ item.name }}"
+     environment: "{{ environment }}"
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    assign_public_ip : yes
+  register: ec2
+  with_items:
+     - "{{ public_ec2_type }}"
+  register: public_ec2
+
+- debug:
+   var: public_ec2.stdout_lines
+
+# - name: Waiting for the instance to come
+#   local_action: wait_for
+#   host: "{{ item.private_ip }}"
+#   state: started
+#   port: 22
+#   with_items: public_ec2.instance

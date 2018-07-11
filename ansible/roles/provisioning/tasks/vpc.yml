@@ -183,11 +183,11 @@
         from_port: "443"
         to_port: "443"
         cidr_ip: "{{ my_ip }}/32"
-  register: my_main_sg
+  register: web_sg
 
-- name: Set Main SG ID
+- name: Set WebLayer SG ID
   set_fact:
-    main_sg_id: "{{ my_main_sg.group_id }}"
+    web_sg_id: "{{ web_sg.group_id }}"
 
 - name: Create Applayer Security Group
   ec2_group:
@@ -201,8 +201,13 @@
       - proto: "tcp"
         from_port: "22"
         to_port: "22"
-        cidr_ip: "{{ my_ip }}/32"
+        group_id: "{{ main_sg_id }}"
       - proto: "tcp"
         from_port: "8080"
         to_port: "8080"
-        group_id: "{{ main_sg_id }}"
+        group_id: "{{ web_sg_id }}"
+    register: app_sg
+
+- name: Set AppLayer SG ID
+  set_fact:
+    app_sg_id: "{{ app_sg.group_id }}"
