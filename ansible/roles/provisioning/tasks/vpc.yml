@@ -201,12 +201,12 @@
       - proto: "tcp"
         from_port: "22"
         to_port: "22"
-        group_id: "{{ main_sg_id }}"
+        group_id: "{{ web_sg_id }}"
       - proto: "tcp"
         from_port: "8080"
         to_port: "8080"
         group_id: "{{ web_sg_id }}"
-    register: app_sg
+  register: app_sg
 
 - name: Set AppLayer SG ID
   set_fact:

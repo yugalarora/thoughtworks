@@ -3,7 +3,8 @@
 - name: create key pair using key_material obtained using 'file' lookup plugin
   ec2_key:
     name: my_keypair
-    key_material: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    key_material: "{{ lookup('file', '~/.ssh/id_rsa_yugal.pub') }}"
+    region: "{{ aws_region }}"
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
 
