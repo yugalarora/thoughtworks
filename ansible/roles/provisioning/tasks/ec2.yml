@@ -3,7 +3,7 @@
 - name: create key pair using key_material obtained using 'file' lookup plugin
   ec2_key:
     name: my_keypair
-    key_material: "{{ lookup('file', '~/.ssh/id_rsa_yugal.pub') }}"
+    key_material: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
     region: "{{ aws_region }}"
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
@@ -26,13 +26,12 @@
      environment: "{{ environment }}"
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
-  register: ec2
+  register: private_ec2
   with_items:
      - "{{ private_ec2_type }}"
-  register: private_ec2
 
 - debug:
-   var: private_ec2.stdout_lines
+   var: private_ec2.stdout
 
 - name: Launching an EC2 Instance in public subnet
   ec2:
@@ -53,13 +52,12 @@
     aws_access_key: "{{ aws_access_key }}"
     aws_secret_key: "{{ aws_secret_key }}"
     assign_public_ip : yes
-  register: ec2
+  register: public_ec2
   with_items:
      - "{{ public_ec2_type }}"
-  register: public_ec2
 
 - debug:
-   var: public_ec2.stdout_lines
+   var: public_ec2.stdout
 
 # - name: Waiting for the instance to come
 #   local_action: wait_for
