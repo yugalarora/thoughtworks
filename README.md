@@ -2,6 +2,8 @@
 
 sudo pip install boto boto3 botocore ansible awscli
 
+Note: you require an ubuntu or a linux system to run this playbook from
+
 -------------------------------------------------------
 The playbook has been broken into below parts:
 
@@ -31,4 +33,26 @@ b) Launch a server in Private/Weblayer subnet
 
 ![alt text](aws.png "VPC architectral view")
 
-***3) Post provisioning setup:***
+***3) Deployment***
+
+a) Will copy your private key into bastion/WebServer
+
+b) Install Nginx as a service on WebServer
+
+c) Install certificate and ssl key in nginx
+
+d) Push configuration file inside nginx
+
+e) Validate nginx configuration and start the service
+
+f) Install Tomcat as a service on AppServer
+
+g) Deploy sample.war available on 'https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war'
+ in Webapps directory
+
+h) Start tomcat service.
+
+#SNAPSHOTS OF NGINX#
+![alt text](Nginx.png "Nginx home page")
+#SNAPSHOTS OF TOMCAT#
+![alt text](Tomcat.png "Tomcat sample webapp homepage")
