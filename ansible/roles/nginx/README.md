@@ -10,6 +10,7 @@ d) Places default.conf inside nginx /etc/nginx/conf.d/ directory
 Requirements
 ------------
 
+Internet access
 Requires become: yes ! sudo access on server
 
 Role Variables
