@@ -1,15 +1,18 @@
 ---
 
-# AWS Credentials
+# Mention you aws_access_key and aws_secret_key below:
 aws_access_key: ""
 aws_secret_key: ""
+
+#Specify region below:
 aws_region: "ap-south-1"
 
 # VPC Information
 vpc_name: "uat"
 vpc_cidr_block: "10.20.0.0/16"
 
-# For Security Group Rule
+# For Security Group Rule, please enter your public IP below, this is to allow SSH to server from your system/server
+#Example: 115.122.120.1/32
 my_ip: ""
 
 # Subnets
@@ -18,11 +21,12 @@ private_subnet_1_cidr: "10.20.1.0/24"
 
 #Details for Launching EC2
 environment: "uat"
+#Accepts multiple entries as list, increase count as required for launching instances of same instance_type
 public_ec2_type:
  - {instance_type: 't2.micro' ,ami: 'ami-d783a9b8' ,count: '1' ,device_name: '/dev/sdb' ,volume_size: '10', name: 'web01'}
 
 private_ec2_type:
  - {instance_type: 't2.micro' ,ami: 'ami-d783a9b8' ,count: '1' ,device_name: '/dev/sdb' ,volume_size: '10', name: 'app01'}
 
-#Details for Tomcat
+#Details for Tomcat, update the file after servers are launched with private IP of tomcat server
 app_server_ip: "10.20.1.187"

@@ -174,15 +174,15 @@
       - proto: "tcp"
         from_port: "22"
         to_port: "22"
-        cidr_ip: "{{ my_ip }}/32"
+        cidr_ip: "{{ my_ip }}"
       - proto: "tcp"
         from_port: "80"
         to_port: "80"
-        cidr_ip: "{{ my_ip }}/32"
+        cidr_ip: "0.0.0.0/0"
       - proto: "tcp"
         from_port: "443"
         to_port: "443"
-        cidr_ip: "{{ my_ip }}/32"
+        cidr_ip: "0.0.0.0/0"
   register: web_sg
 
 - name: Set WebLayer SG ID
