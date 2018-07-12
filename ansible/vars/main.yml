@@ -23,3 +23,6 @@ public_ec2_type:
 
 private_ec2_type:
  - {instance_type: 't2.micro' ,ami: 'ami-d783a9b8' ,count: '1' ,device_name: '/dev/sdb' ,volume_size: '10', name: 'app01'}
+
+#Details for Tomcat
+app_server_ip: "10.20.1.187"
