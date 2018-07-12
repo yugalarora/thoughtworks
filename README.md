@@ -29,8 +29,6 @@ a) Launch a server in Public/AppLayer subnet, assign a public IP to it.
 
 b) Launch a server in Private/Weblayer subnet
 
+![alt text](aws.png "VPC architectral view")
+
 ***3) Post provisioning setup:***
-
-a) We'll propogate keys to bastion, so we can reach App server from there
-
-b) Install required packages onto App and Web Server
