@@ -43,7 +43,7 @@ A Detailed summary of what the playbook does:
 a) Create a VPC
 b) Create a NAT Gateway
 c) Attach EIP to NAT Gateway
-d) Create 2 subnets (a Public/Weblayer and a Private/AppLayer)
+d) Create 2 subnets (a Public/AppLayer and a Private/WebLayer)
 e) Allow SSH from client to Server in Public subnet
 **(This server will act as a web server for our Application and Also a bastion to reach servers inside AppSubnet)**
 f) Allow SSH to servers in Private Subnet only from bastion
