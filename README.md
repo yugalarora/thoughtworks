@@ -52,7 +52,7 @@ g) Deploy sample.war available on 'https://tomcat.apache.org/tomcat-7.0-doc/appd
 
 h) Start tomcat service.
 
-#SNAPSHOTS OF NGINX#
+**Snapshot of Nginx running on https**
 ![alt text](Nginx.png "Nginx home page")
-#SNAPSHOTS OF TOMCAT#
+**Snapshot of Tomcat running on https**
 ![alt text](Tomcat.png "Tomcat sample webapp homepage")
