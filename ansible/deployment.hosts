@@ -1,0 +1,4 @@
+[local]
+localhost ansible_connection=local
+[appserver]
+10.20.1.187 host_key_checking=false

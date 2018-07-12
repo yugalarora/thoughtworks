@@ -2,7 +2,7 @@ server {
     listen               443 ssl;
     ssl                  on;
     ssl_certificate      /etc/ssl/certs/myssl.crt;
-    ssl_certificate_key  /etc/ssl/private/myssl.key;
+    ssl_certificate_key  /etc/ssl/certs/myssl.key;
     server_name companynews.com;
     location /tomcat {
 	proxy_pass http://{{ app_server_ip }}:8080/sample;

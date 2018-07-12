@@ -1,3 +1,13 @@
 ---
- - name: Install nginx
-   shell: 'sudo amazon-linux-extras install tomcat8.5'
+ - name: Install Tomcat 
+   shell: 'amazon-linux-extras install tomcat8.5'
+
+ - name: Deploy war file
+   get_url:
+     url: https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+     dest: /usr/share/tomcat/webapps/sample.war
+
+ - name: Start tomcat
+   service:
+     name: tomcat
+     state: started    

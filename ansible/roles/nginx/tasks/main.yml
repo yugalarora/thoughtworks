@@ -7,9 +7,6 @@
     group: ec2-user
     mode: 0400
 
-- name: Install ansible on launched webServer
-  shell: 'pip install ansible'
-
 - name: Install nginx
   shell: 'amazon-linux-extras install nginx1.12'
 
@@ -28,7 +25,7 @@
 - name: Copy ssl key
   copy:
     src: files/myssl.key
-    dest: /etc/ssl/private/myssl.key
+    dest: /etc/ssl/certs/myssl.key
 
 - name: Validate nginx configuration
   shell: "nginx -t"
