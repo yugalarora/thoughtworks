@@ -43,7 +43,7 @@ A Detailed summary of what the playbook does:
 a) Create a VPC
 b) Create a NAT Gateway
 c) Attach EIP to NAT Gateway
-d) Create 2 subnets (a Public/AppLayer and a Private/WebLayer)
+d) Create 2 subnets (a Public/WebLayer and a Private/AppLayer)
 e) Allow SSH from client to Server in Public subnet
 **(This server will act as a web server for our Application and Also a bastion to reach servers inside AppSubnet)**
 f) Allow SSH to servers in Private Subnet only from bastion
@@ -51,8 +51,8 @@ g) Allow/Restrict traffic between public and private subnet.
 
 ***2) Launch EC2 Servers:***
 
-a) Launch a server in Public/AppLayer subnet, assign a public IP to it.
-b) Launch a server in Private/Weblayer subnet
+a) Launch a server in Public/WebLayer subnet, assign a public IP to it.
+b) Launch a server in Private/AppLayer subnet
 
 **Architectral view of Environment**
 ![alt text](aws.png "VPC architectral view")
