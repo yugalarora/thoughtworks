@@ -19,7 +19,7 @@ d) Create 2 subnets (a Public/Weblayer and a Private/AppLayer)
 
 e) Allow SSH from client to Server in Public subnet
 
-(This server will act as a web server for our Application and Also a bastion to reach Private )
+**(This server will act as a web server for our Application and Also a bastion to reach servers inside AppSubnet)**
 
 f) Allow SSH to servers in Private Subnet only from bastion
 
