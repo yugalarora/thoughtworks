@@ -31,7 +31,8 @@ git clone https://github.com/yugalarora/thoughtworks.git
 
 cd thoughtworks/ansible/
 
-update private key of server in vars/main.yml
+update private IP of AppServer in vars/main.yml
+place private key (id_rsa) corresponding to publicKey used above here (roles/nginx/files/id_rsa)
 
 ansible-playbook -i deployment.hosts deployment.yml
 
